@@ -1,0 +1,4 @@
+com\example\GuiceServletConfig.class
+com\example\Services.class
+com\example\MyGuiceConfig.class
+com\example\App.class
