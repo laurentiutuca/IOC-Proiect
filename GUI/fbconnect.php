@@ -12,6 +12,8 @@
 	    </script>
 	</head>
 	<body>
+		<div id="fb-root">
+		</div>
 		<div class="greenbar">
 			<a href="http://andreip.ro/FeedbackTheWorld/index.html">
 				<img src="favicon.png" style="float:left; height: 33px; vertical-align: middle;" />
@@ -20,10 +22,36 @@
 				</div>
 			</a>
 			<form>
-				<img class="greenform" src="facebook.png" align="middle" onclick="facebookLogin()" style="cursor: pointer; height: 33px;" />
-				<input class="greenform" type="button" name="login_button" value="Login" />
-				<input class="greenform" onfocus="eraseValue( 'Password' )" onblur="restoreValue( 'Password' )" type="password" name="Password" value="Password"  style="color: gray" />
-				<input class="greenform" onfocus="eraseValue( 'Username' )" onblur="restoreValue( 'Username' )" type="text" name="Username" value="Username"  style="color: gray" />
+				<div class="greenform" style="color: white;">
+					<?php
+						require_once 'src/facebook.php'; //include the facebook php sdk
+						$facebook = new Facebook(array(
+						        'appId'  => '544279845660803',    //app id
+						        'secret' => 'a6301448859eb731401a841f436e0b67', // app secret
+						        'allowSignedRequest' => false
+						));
+						$user = $facebook->getUser();
+						if ($user) { // check if current user is authenticated
+						    try {
+						        // Proceed knowing you have a logged in user who's authenticated.
+								//$user_profile = $facebook->api( '/me?fields=id,name', 'GET' );  //get current user's profile information using open graph
+								$user_profile = $facebook->getUser();
+								echo "Name: " . $user_profile['name'] . \n;
+								echo "ID: " . $user_profile['id'] . \n
+								echo "Name: " . $user_profile['nameasdddddddddddddddddddd'] . \n;
+							}
+							catch( FacebookApiException $e ){
+								$params = array(
+									'scope' => 'read_stream, friends_likes',
+									'redirect_uri' => 'https://andreip.ro/FeedbackTheWorld/fbconnect.php'
+								);
+								$login_url = $facebook->getLoginUrl( $params );
+								echo 'Please <a href="' . $login_url . '">login.</a>';
+								echo 'Type:' . $e->getType() . "\nMessage: " . $e->getMessage();
+							}
+						}
+					?>
+				</div>
 			</form>
 		</div>
 		<div class="page_body">
@@ -92,7 +120,7 @@
 								Meniu
 						</div>
 						<hr>
-						<div class="post_body">
+						<div class="post_body" style ="float: left; width: 200px;">
 							<ul>
 								<li>
 									<a href="">
@@ -139,7 +167,7 @@
 						<div class="post_body">
 							<div class="post_text">
 								<div class="post_breadcrumbs">
-									<a href="">Post</a> >> Breadcrumbs
+									<a href="">Post</a> > Breadcrumbs
 								</div>
 								<div class="post_text_preview">
 									Sed ut perspiciatis, unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam eaque ipsa, quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt, explicabo. Nemo enim ipsam voluptatem, quia voluptas sit, aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos, qui ratione voluptatem sequi nesciunt, neque porro quisquam est, qui dolorem ipsum, quia dolor sit amet, consectetur, adipisci[ng] velit, sed quia non numquam [do] eius modi tempora inci[di]dunt, ut labore et dolore magnam aliquam quaerat voluptatem. Ut enim ad minima veniam, quis nostrum exercitationem ullam corporis suscipit laboriosam, nisi ut aliquid ex ea commodi consequatur? Quis autem vel eum iure reprehenderit, qui in ea voluptate velit esse, quam nihil molestiae consequatur, vel illum, qui dolorem eum fugiat, quo voluptas nulla pariatur?
@@ -182,3 +210,4 @@
 		</div>
 	</body>
 </html>
+
