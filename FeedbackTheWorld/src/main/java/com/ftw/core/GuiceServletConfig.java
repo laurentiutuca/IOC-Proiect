@@ -1,4 +1,4 @@
-package com.example;
+package com.ftw.core;
 
 import com.google.inject.Guice;
 import com.google.inject.Injector;

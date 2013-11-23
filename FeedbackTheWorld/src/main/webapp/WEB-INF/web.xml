@@ -9,7 +9,7 @@
     </session-config>
 
     <listener>
-        <listener-class>com.example.GuiceServletConfig</listener-class>
+        <listener-class>com.ftw.core.GuiceServletConfig</listener-class>
     </listener>
     <filter>
         <filter-name>Guice Filter</filter-name>
