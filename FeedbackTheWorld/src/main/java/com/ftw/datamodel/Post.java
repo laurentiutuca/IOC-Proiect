@@ -2,9 +2,10 @@ package com.ftw.datamodel;
 
 import javax.xml.bind.annotation.XmlRootElement;
 
+import com.ftw.core.SampleModel;
+
 @XmlRootElement
-public class Post {
-	private int id;
+public class Post extends SampleModel{
 	private int articleid;
 	private int authorid;
 	private String body;
@@ -12,25 +13,14 @@ public class Post {
 	private double rating;
 	
 	public Post() {
-		this.id = 0;
+		super(Post.class);
 		this.articleid = 0;
 		this.authorid = 0;
 		this.body = "";
 		this.date = "";
 		this.rating = 0;
 	}
-	/**
-	 * @return the id
-	 */
-	public int getId() {
-		return id;
-	}
-	/**
-	 * @param id the id to set
-	 */
-	public void setId(int id) {
-		this.id = id;
-	}
+	
 	/**
 	 * @return the articleid
 	 */

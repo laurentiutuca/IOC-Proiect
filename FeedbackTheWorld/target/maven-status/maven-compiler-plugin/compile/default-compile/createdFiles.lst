@@ -1,10 +1,10 @@
-com\ftw\core\MyGuiceConfig.class
 com\ftw\datamodel\UserType.class
-com\ftw\datamodel\Post.class
-com\ftw\core\GuiceServletConfig.class
-com\ftw\App.class
-com\ftw\datamodel\UserInfo.class
-com\ftw\core\ServiceDatabase.class
 com\ftw\services\SignUpService.class
 com\ftw\managers\UsersManager.class
+com\ftw\core\MyGuiceConfig.class
+com\ftw\App.class
+com\ftw\core\GuiceServletConfig.class
+com\ftw\datamodel\Post.class
+com\ftw\datamodel\UserInfo.class
+com\ftw\core\ServiceDatabase.class
 com\ftw\datamodel\Article.class

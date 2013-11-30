@@ -5,8 +5,10 @@ import java.util.List;
 
 import javax.xml.bind.annotation.XmlRootElement;
 
+import com.ftw.core.SampleModel;
+
 @XmlRootElement
-public class Article {
+public class Article extends SampleModel{
 	private int authorid;
 	private String subject;
 	private String body;
@@ -14,10 +16,11 @@ public class Article {
 	private int rating;
 	private String link;
 	private String date;
-	private int category;
+	private int categoryId;
 	private List<Post> comentarii;
 	
 	public Article() {
+		super(Article.class);
 		this.authorid = 0;
 		this.subject = "";
 		this.body = "";
@@ -25,7 +28,7 @@ public class Article {
 		this.rating = 0;
 		this.link = "";
 		this.date = "";
-		this.category = 0;
+		this.categoryId = 0;
 		this.comentarii = new ArrayList<Post>();
 	}
 	/**
@@ -116,13 +119,13 @@ public class Article {
 	 * @return the category
 	 */
 	public int getCategory() {
-		return category;
+		return categoryId;
 	}
 	/**
 	 * @param category the category to set
 	 */
-	public void setCategory(int category) {
-		this.category = category;
+	public void setCategory(int categoryId) {
+		this.categoryId = categoryId;
 	}
 	/**
 	 * @return the comentarii

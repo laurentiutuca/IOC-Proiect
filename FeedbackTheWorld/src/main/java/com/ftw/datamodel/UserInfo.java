@@ -2,9 +2,10 @@ package com.ftw.datamodel;
 
 import javax.xml.bind.annotation.XmlRootElement;
 
+import com.ftw.core.SampleModel;
+
 @XmlRootElement
-public class UserInfo {
-	private int id;
+public class UserInfo extends SampleModel{
 	private String username;
 	private String password;
 	private String fullname;
@@ -18,7 +19,7 @@ public class UserInfo {
 	private int nosessions;
 	
 	public UserInfo() {
-		this.id = 0;
+		super(UserInfo.class);
 		this.username = "";
 		this.password = "";
 		this.fullname = "";
@@ -32,19 +33,6 @@ public class UserInfo {
 		this.nosessions = 0; 
 	}
 	
-	
-	/**
-	 * @return the id
-	 */
-	public int getId() {
-		return id;
-	}
-	/**
-	 * @param id the id to set
-	 */
-	public void setId(int id) {
-		this.id = id;
-	}
 	/**
 	 * @return the username
 	 */
