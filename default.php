@@ -35,7 +35,7 @@
 				<div id = "logo_text">Feedback The World</div>
 			</a>
 			<div class="btn-sign">
-				<a href="#login-box" class="login-window">Login / Sign In</a>
+				<a href="#login-box" class="login-window">Login / Sign Up</a>
         		</div>
 
 			<!-- login popup -->
@@ -54,7 +54,7 @@
 							<input id="password" name="password" value="" type="password" placeholder="Password">
 						</label>
                 
-						<button class="submit button loginbtn" type="submit">Sign in</button>
+						<button class="submit button loginbtn" type="submit">Sign Up</button>
                 
 						<p>
 							<a href="#authenticate_box" id="open_authBox" class="authenticate-window">Don't have an account? Create a new one!</a>
@@ -124,6 +124,49 @@
 		<div id="greenline">
 		</div>
 		<div id="right_post_wrapper">
+			<div id="menu">
+				<div class="right_arrow_wrapper">
+				</div>
+				<div class="right_post_useful">
+					<div class="post_title">
+							Meniu
+						<hr />
+					</div>
+					<div class="menu_body">
+						<div id="menu_text">
+							<ul>
+								<li>
+									<a class="pointerCursor">
+										Cultur&#259;
+									</a>
+								</li>
+								<li>
+									<a class="pointerCursor">
+										Economie
+									</a>
+								</li>
+								<li>
+									<a class="pointerCursor">
+										Politic&#259;
+									</a>
+								</li>
+								<li>
+									<a class="pointerCursor">
+										Sport
+									</a>
+								</li>
+								<li>
+									<a class="pointerCursor">
+										Tehnologie &#x219;i &#x219;tiin&#x21B;&#259;
+									</a>
+								</li>
+							</ul>
+						</div>
+						<div class="fb-like-box" data-href="http://www.facebook.com/feedback.the.world" data-colorscheme="dark" data-show-faces="true" data-header="false" data-stream="false" data-show-border="false">
+						</div>
+					</div>
+				</div>
+			</div>
 		</div>
 	</body>
 </html>
