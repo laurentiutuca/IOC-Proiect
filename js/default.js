@@ -45,9 +45,9 @@ function updateGreenlineLength(){
 	greenline = document.getElementById( 'greenline' );
 	if( n_posts >= 2 ){
 		if( n_posts % 2 == 0 )
-			greenline.style.height = 355 + 225 * ( n_posts / 2 - 1 );
+			greenline.style.height = 355 + 238 * ( n_posts / 2 - 1 );
 		else
-			greenline.style.height = 455 + 225 * ( n_posts / 2 - 1 );
+			greenline.style.height = 455 + 238 * ( n_posts / 2 - 1 );
 	}
 }
 
@@ -62,22 +62,30 @@ function insertNewPost( title, text_preview, img_src, category, category_explici
 		else
 			side = 'left';
 	}
+	for( i = 300; i < text_preview.length; i += 1 ){
+		if( text_preview[i] == ' ' ){
+			text_preview = text_preview.substr( 0, i ) + '...';
+			break;
+		}
+	}
 	a_href = '<a id="a_href_articol" href="article.php?title=' + title + '&text_preview=' + text_preview + '&img_src=' + img_src + '&category=' + category_explicit + '&category_explicit=' + category_explicit + '&url=' + url + '">';
+	text_preview += '<br />' + '<a href="article.php?title=' + title + '&text_preview=' + text_preview + '&img_src=' + img_src + '&category=' + category_explicit + '&category_explicit=' + category_explicit + '&url=' + url + '">' + 'Cite&#x219;te tot articolul...</a>'
 	document.getElementById( side + '_post_wrapper' ).innerHTML += '' +
 				'<div class="' + side + '_side_post">' + 
 					'<div class="' + side + '_post_useful">' + 
 						a_href + 
 							'<div class="post_title">' + 
-								a_href +
-									title +
-								'</a>' + 
+								title +
+								'<hr />' + 
 							'</div>' + 
 						'</a>' + 
-						'<hr>' + 
 						'<div class="post_body">' + 
 							'<div class="post_text">' + 
 								'<div class="post_breadcrumbs">' + 
-									'<a href="">' + category + '</a> >> ' + title +
+									'<a href="">' +
+										category +
+									'</a>' + 
+									' >> ' + title +
 								'</div>' + 
 								a_href + 
 									'<div class="post_text_preview">' + 
@@ -159,7 +167,7 @@ function init(){
 	insertNewPost( 'Sova: BEI, BERD si BM, interesate sa finanteze Comarnic-Brasov', '\nConstructorul va fi desemnat in decembrie/ Nu stiu cat va genera acciza de 7 eurocenti la carburanti. Eu as vrea sa finanteze numai autostrazi', 'http://media.hotnews.ro/media_server1/image-2013-11-24-16065745-46-dan-sova-dupa-20-ani.png', 'Economie', 'Economie', 'http://revistapresei.hotnews.ro/stiri-radio_tv-16065742-sova-bei-berd-interesate-finanteze-comarnic-brasov-constructorul-desemnat-decembrie-nu-stiu-cat-genera-acciza-7-eurocenti-carburanti-vrea-finanteze-numai-autostrazi.htm' );
 	string = '\nPre&#351;edintele Camerei Deputa&#x21B;ilor, Valeriu Zgonea, spune c&#x103; cererea PDL ca Parchetul s&#x103; se autosesizeze &#238;n privin&#x21B;a terenurilor Ioanei B&#x103;sescu reprezint&#x103; &quot;un tertip&quot; &#351;i ar fi o &quot;mare gre&#351;eal&#x103;&quot;, &#238;n timp ce vicepre&#351;edintele PDL Cezar Preda afirm&#x103; c&#x103; &quot;tertipul&quot; este comisia parlamentar&#x103; &#238;n acest caz.';
 	insertNewPost( 'Zgonea: Cererea PDL la Parchet pe terenul lui B&#x103;sescu, un tertip', string, 'http://media.realitatea.ro/multimedia/image/201311/w728/valeriu_zgonea_62923100_17998400_62135000_99371800_36294500.jpg', 'Politic&#259;', 'Politic&#259;', 'http://www.realitatea.net/zgonea-cererea-pdl-la-parchet-pe-terenul-lui-basescu-un-tertip_1323975.html' );
-	insertNewPost( 'A castigat cu 6-0 impotriva lui Chiriches, dar primeste[...]', '\nAnuntul de ULTIMA ora facut de Pellegrini! Ce se intampla cu Panti: Manchester City a demolat astazi Tottenham-ul lui Andre Villas Boas si Chiriches, echipa milionarilor de pe Ettihad, cu Pantilimon titular, castigand cu 6-0 in fata rivalilor londonezi.', 'http://assets.sport.ro/assets/sport/2013/11/24/image_galleries/192083/a-castigat-cu-6-0-impotriva-lui-chiriches-dar-primeste-o-veste-teribila-anuntul-de-ultima-ora-facut-de_size1.jpg', 'Sport', 'Sport', 'http://www.sport.ro/stranieri/a-castigat-cu-6-0-impotriva-lui-chiriches-dar-primeste-o-veste-teribila-anuntul-de-ultima-ora-facut-de.html' );
+	insertNewPost( 'A castigat cu 6-0 impotriva lui Chiriches, dar primeste...', '\nAnuntul de ULTIMA ora facut de Pellegrini! Ce se intampla cu Panti: Manchester City a demolat astazi Tottenham-ul lui Andre Villas Boas si Chiriches, echipa milionarilor de pe Ettihad, cu Pantilimon titular, castigand cu 6-0 in fata rivalilor londonezi.', 'http://assets.sport.ro/assets/sport/2013/11/24/image_galleries/192083/a-castigat-cu-6-0-impotriva-lui-chiriches-dar-primeste-o-veste-teribila-anuntul-de-ultima-ora-facut-de_size1.jpg', 'Sport', 'Sport', 'http://www.sport.ro/stranieri/a-castigat-cu-6-0-impotriva-lui-chiriches-dar-primeste-o-veste-teribila-anuntul-de-ultima-ora-facut-de.html' );
 	string = '\n&#xCE;ncep&#226;nd de ast&#x103;zi comenta ISON nu va mai putea fi observat&#x103;, o vreme, deoarece este prea aproape de Soare. Este doar o situa&#539;ie provizorie, iar cometa va redeveni vizibil&#x103; &#238;n jurul zilei de 5 decembrie, conform simulatorului Comet ISON flyby simulation, pe care vi-l recomandam &#238;ntr-o postare anterioar&#x103;.';
 	insertNewPost( 'Cometa ISON se apropie inexorabil de Soare (foto, video)', string, 'http://stiintasitehnica.com/wp-content/uploads/2013/11/20131114-ISON-RGB-60-SEC-D-1024x1024.jpg', 'Tehnologie &#x219;i &#x219;tiin&#x21B;&#259;', 'Tehnologie &#x219;i &#x219;tiin&#x21B;&#259;', 'http://stiintasitehnica.com/stiri/cometa-ison-este-vizibila-cu-ochiul-liber/index.html' );
 	insertNewPost( 'Cometa ISON se apropie inexorabil de Soare (foto, video)', string, 'http://stiintasitehnica.com/wp-content/uploads/2013/11/20131114-ISON-RGB-60-SEC-D-1024x1024.jpg', 'Tehnologie &#x219;i &#x219;tiin&#x21B;&#259;', 'Tehnologie &#x219;i &#x219;tiin&#x21B;&#259;', 'http://stiintasitehnica.com/stiri/cometa-ison-este-vizibila-cu-ochiul-liber/index.html' );

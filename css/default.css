@@ -1,12 +1,11 @@
 body{
 	background-color: #dff0d8;
 	font-family: Corbel;
-	z-index: -100
-	overflow-y: hidden;
+	z-index: -100;
 }
 
 p, h1, h2, h3, h4, h5, h6{
-	color: white;
+	color: #000000;
 }
 
 h1, h2, h3, h4, h5, h6{
@@ -14,12 +13,13 @@ h1, h2, h3, h4, h5, h6{
 }
 
 a {
-	color: #FFFFFF;
+	color: #0a0;
 }
 
 #a_href_articol{
-	color: #000;
+	color: #000000;
 	text-decoration: none;
+	bottom: 0;
 }
 
 .colorWhite{
@@ -48,7 +48,6 @@ a {
 	vertical-align: middle;
 	margin: 6px;
 }
-
 
 #page_body{
 	z-index: 1;
@@ -123,7 +122,6 @@ a {
 }
 
 .left_side_post{
-	background-color: #FFFFFF;
 	position: relative;
 	top: 33px;
 	right: 0px;
@@ -133,12 +131,11 @@ a {
 	border: 0px;
 	margin: 0px;
 	padding: 0px;
-	margin-bottom: 10px;
+	margin-bottom: 30px;
 	z-index: 3;
 }
 
 .right_side_post{
-	background-color: #FFFFFF;
 	position: relative;
 	top: 33px;
 	left: 0px;
@@ -148,7 +145,7 @@ a {
 	border: 0px;
 	margin: 0px;
 	padding: 0px;
-	margin-bottom: 10px;
+	margin-bottom: 30px;
 	z-index: 3;
 }
 
@@ -244,24 +241,41 @@ a {
 
 .post_title{
 	width: 100%;
-	height: 12px;
-	color: #000;
+	height: 20px;
+	background-color: green;
+	color: white;
 	font-size: 18;
+	display: inline-block;
 }
 
 .post_body{
 	position: relative;
+	background-color: #dff0d8;
 	width: 100%;
-	height: 100%;
+	height: 180px;
 	float: left;
 	color: #000;
 	font-size: 14;
+	z-index: 11;
+	display: inline-block;
+}
+
+.menu_body{
+	position: relative;
+	background-color: #dff0d8;
+	width: 100%;
+	height: 280px;
+	float: left;
+	color: #000;
+	font-size: 14;
+	z-index: 11;
 }
 
 .post_text{
 	COLOR: #000 !important;
 	position: relative;
 	float: left;
+	z-index: 10;
 }
 
 .post_image{
@@ -310,7 +324,7 @@ ul.tabs li a
     position: relative;
     padding: 7px 16px;
     border: 1px solid green;
-    border-bottom-color:green;
+    border-bottom-color: green;
     color: #000;
     background: #F0F0F0 url(tabbg.gif) 0 0 repeat-x;
     border-radius: 3px 3px 0 0;
@@ -385,6 +399,10 @@ div.tabcontents
 	border-radius:3px 3px 3px 3px;
     -moz-border-radius: 3px; /* Firefox */
     -webkit-border-radius: 3px; /* Safari, Chrome */
+}
+
+.login-window{
+	color: #4f4;
 }
 
 .authenticate-popup{

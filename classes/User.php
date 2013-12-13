@@ -1,5 +1,5 @@
 <?php
-	include dirname(dirname(__FILE__)) . "/config.php";	
+	require_once( dirname(dirname(__FILE__)) . '/config.php' );	
 
 	class User {
 
@@ -33,13 +33,13 @@
 		public function newUser() {
 			$query = "INSERT into ftwusers (username, user_fullname, user_email, user_passwordhash, user_country, user_address, user_age, user_rating, user_typeid, user_sessions) VALUES ('" . $this->username . "', '" . $this->fullname . "', '" . $this->email . "', '" . md5($this->password) . "', '" . $this->country . "', '" . $this->address . "', " . $this->age . ", 0, 1, 0);";
 
-			mysql_query($query) or die(mysql_error());
+			mysql_query( $query ) or die(mysql_error());
 		}
 
 		public function login() {
 			$query = "SELECT * FROM ftwusers WHERE username = '" . $this->username . "' AND user_passwordhash='" . md5($this->password) . "';";
 
-			$result = mysql_query($query);
+			$result = mysql_query( $query);
 
 			if (mysql_fetch_array($result)) {
 				return true;
