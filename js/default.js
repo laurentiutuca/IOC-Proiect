@@ -55,8 +55,9 @@ function checkJS() {
 	alert("here");
 }
 
-function insertNewPost( title, text_preview, img_src, category, category_explicit, url ){
+function insertNewPost(n_posts, title, text_preview, img_src, category, category_explicit, url ){
 	var side;
+
 	if( n_posts <= 1 ){
 		side = 'left';
 	}
