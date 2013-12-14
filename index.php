@@ -1,12 +1,14 @@
 <?php
 	include "config.php";
 	include "classes/User.php";
+	include "classes/Article.php";
 
 	require_once 'variables.php';
 	require_once 'functions.php';
 
-	if (isset($_POST['actionindex'])) {
-		switch($_POST['actionindex']) {
+	if (isset($_POST['actionindex']) || isset($_GET['actionindex'])) {
+		$action = isset($_POST['actionindex']) ? $_POST['actionindex'] : $_GET['actionindex'];
+		switch($action) {
 			case 'login':
 				if (isset($_POST['username']) && isset($_POST['password'])) {
 					// escape | validate inputs
@@ -18,9 +20,13 @@
 						$user = new User();
 						$user->setAttributes($username, $password);
 						$validUser = $user->login();
-						var_dump($validUser); die();
+						$_SESSION['login'] = true;
+						$_SESSION['userid'] = $user->userid;
+						$_SESSION['username'] = $user->username;
 					}	
 				}
+
+				require_once("default.php");
 				break;
 
 			case 'authenticate':
@@ -39,13 +45,38 @@
 					$user->newUser();
 				}
 
+				require_once("default.php");
 				break;
-		
+
+			case "logout":
+				if (isset($_SESSION['login']) && $_SESSION['login'] == true) {
+					unset($_SESSION['login']);
+				}
+
+				require_once("default.php");
+				break;
+
+			case "addarticle":
+				require_once("newarticle.php");
+				break;
+
+			case "submitarticle":
+				if (isset($_POST['title']) && isset($_POST['url'])) {
+					$article = new Article();
+					$article->setAttributes($_POST['url'], $_POST['url_image'], $_POST['feedback'], $_POST['title'], $_POST['selectedcategory'], $_SESSION['userid']);
+
+					$article->getArticleViaCurl();
+
+					$article->addArticle();
+					require_once("default.php");
+				}
+				break;
+
 			default:
+				require_once("default.php");				
 				break;
 		}
+	} else {
+		require_once("default.php");
 	}
-
-	require_once("default.php");
-
 ?>

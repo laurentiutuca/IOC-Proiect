@@ -1,6 +1,9 @@
 <?php
 	require_once('variables.php');
 	require_once('functions.php');
+
+	include "config.php";
+	include "classes/ArticleManager.php";
 ?>
 
 <!DOCTYPE>
@@ -23,7 +26,6 @@
 		</script>
 	</head>
 	<body onload="init()">
-
 		<!-- Facebook -->
 		<div id="fb-root">
 		</div>
@@ -34,9 +36,19 @@
 				<img id = "logo_img" src = "img/favicon.png" />
 				<div id = "logo_text">Feedback The World</div>
 			</a>
-			<div class="btn-sign">
-				<a href="#login-box" class="login-window">Login / Sign Up</a>
-        		</div>
+
+			<?php if (isset($_SESSION['login']) && $_SESSION['login'] == true) { ?>
+				<div class="btn-sign">
+					<a href="index.php?actionindex=logout" class="logout_option">Logout</a>
+        			</div>
+				<div class="btn-sign">
+					<a href="index.php?actionindex=addarticle" class="article_option">Add article</a>
+        			</div>
+			<?php } else {?>		
+				<div class="btn-sign">
+					<a href="#login-box" class="login-window">Login / Sign Up</a>
+        			</div>
+			<?php } ?>
 
 			<!-- login popup -->
 			<div id="login-box" class="login-popup">
@@ -168,6 +180,14 @@
 				</div>
 			</div>
 		</div>
+		<?php $articleManager = new ArticleManager();
+			$articleList = $articleManager->getArticlesList();
+
+			$i = 0;
+			for ($i = 0; $i < count($articleList); $i++) {
+				echo '<script>insertNewPost("' . $articleList[$i]->subject . '", "' . $articleList[$i]->body . '", "' . $articleList[$i]->url_image . '", "' . $articleList[$i]->category . '", "' . $articleList[$i]->link . '"); </script>';
+			}
+		 ?>
 	</body>
 </html>
 

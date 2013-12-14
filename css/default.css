@@ -250,7 +250,7 @@ a {
 
 .post_body{
 	position: relative;
-	background-color: #dff0d8;
+	background-color: #ffffff;
 	width: 100%;
 	height: 180px;
 	float: left;
@@ -262,7 +262,7 @@ a {
 
 .menu_body{
 	position: relative;
-	background-color: #dff0d8;
+	background-color: #ffffff;
 	width: 100%;
 	height: 280px;
 	float: left;
@@ -405,6 +405,18 @@ div.tabcontents
 	color: #4f4;
 }
 
+.logout_option {
+	color: #4f4;
+}
+
+.article_option {
+	color: #4f4;
+}
+
+.logout {
+	color: #4f4;
+}
+
 .authenticate-popup{
 	display:none;
 	background: #333;
@@ -504,4 +516,54 @@ form.authenticate input::-webkit-input-placeholder { color:#bbb; text-shadow:0 0
 
 .loginbtn {
 	margin-left: 80px;
+}
+
+.addarticle_body {
+	position: relative;
+	background: #fff;
+	height: 100%;
+	width: 50%;
+	border: 2px solid green;
+	margin-top: 40px;
+}
+
+.article_header {
+	float: left !important;
+	margin-left: 5px;
+	font-size: 30px;
+}
+
+.article_form {
+	float: left !important;
+	margin-top:10px;
+	width: 100%;
+	margin-top: 20px;
+}
+
+.article_formalign {
+	float: left !important;
+}
+
+.inputfield {
+	width: 400px;
+	height: 20px;
+}
+
+.inputfeedback {
+	width: 400px;
+	height: 100px;
+}
+
+.addarticle_form {
+	float: left !important;
+	margin-left: 5px;
+	width: 100%;
+}
+
+.newctg {
+	margin-top: 5px;
+}
+
+.article_submitbtn {
+	margin-top: 10px;
 }

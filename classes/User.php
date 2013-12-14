@@ -2,7 +2,7 @@
 	require_once( dirname(dirname(__FILE__)) . '/config.php' );	
 
 	class User {
-
+		public $userid;
 		public $username;
 		public $password;
 		public $passwordHash;
@@ -39,9 +39,12 @@
 		public function login() {
 			$query = "SELECT * FROM ftwusers WHERE username = '" . $this->username . "' AND user_passwordhash='" . md5($this->password) . "';";
 
-			$result = mysql_query( $query);
+			$result = mysql_query($query);
 
-			if (mysql_fetch_array($result)) {
+			$row = mysql_fetch_array($result);
+			if ($row) {
+				$this->userid = $row['userid'];
+
 				return true;
 			}
 
