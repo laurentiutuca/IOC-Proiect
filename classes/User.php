@@ -11,6 +11,7 @@
 		public $country;
 		public $address;
 		public $age;
+		public $rating;
 		
 		public function __constructor() {
 
@@ -44,6 +45,7 @@
 			$row = mysql_fetch_array($result);
 			if ($row) {
 				$this->userid = $row['userid'];
+				$this->rating = $row['user_rating'];
 
 				return true;
 			}

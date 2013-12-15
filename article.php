@@ -28,9 +28,37 @@
 			require 'functions.php';
 			require 'classes/Article.php';
 			require 'classes/ArticleManager.php';
+			require 'classes/Post.php';
+			require 'classes/PostManager.php';
 		?>
 	</head>
 	<body>
+
+	<?php
+		// check post submit action
+		if (isset($_POST['actionindex']) || isset($_GET['actionindex'])) {
+			$action = isset($_POST['actionindex']) ? $_POST['actionindex'] : $_GET['actionindex'];
+			switch($action) {
+				case "addpost":
+					$articleid = $_POST['postindex'];
+					$postbody = $_POST['post'];
+					$authorid = $_SESSION['userid'];
+
+					$post = new Post();
+					$post->setAttributes($authorid, $postbody, $articleid);
+					$post->addPost();
+					include "article.php?articleid=" . $articleid;
+					break;
+				default:
+					break;
+			}
+		}
+
+		// get posts list for this article
+		$postManager = new PostManager();
+		$postList = $postManager->getPostsList($_GET['articleid']);
+	?>
+		
 
 	<!-- Facebook -->
 	<div id="fb-root">
@@ -114,10 +142,14 @@
 				</ul>
 				<div class="tabcontents">
 					<div id="mostrecent">
-					<table width=100% boarder="1" bordercolor="green"><tr><td>
-						<span style="background-color:lime;width=30px;text-align:center" height="20">21</span> <b>Nume Prenume</b><span style="float:right">10/10/2013</span>
+					<?php $i = 0;
+						for ($i = 0; $i < count($postList); $i++) { 
+					?>
+					<table width=100% boarder="1" bordercolor="green">
+					<tr><td>
+						<span style="background-color:lime;width=30px;text-align:center" height="20"><?php echo $postList[$i]->author_rating; ?></span> <b><?php echo $postList[$i]->author; ?></b><span style="float:right"><?php echo $postList[$i]->date; ?></span>
 						<br \><img src="img/rank6.png" height="20"></img>
-						<p><font color="black">Eu cred ca pitong</font></p>
+						<p><font color="black"><?php echo $postList[$i]->body; ?></font></p>
 						<p>
 							<span style="text-align:right">
 							<font color="green">
@@ -128,6 +160,20 @@
 							<a href=# style="color:green">All this author posts</a> | <a href=# style="color:green">Read full post</a>
 							</span>
 						</p>
+					</td></tr></table><br>
+					<?php } ?>
+					<table width=100% boarder="1" bordercolor="green"><tr><td>
+						<span style="background-color:lime;width=30px;text-align:center" height="20"><?php echo $_SESSION['rating']; ?></span> <b><?php echo $_SESSION['username']; ?></b><span style="float:right"><?php echo date("F j, Y, g:i a"); ?></span>
+						<br \>
+						<form method="post" class="addpost_form" action="article.php">
+							<input type="hidden" name="actionindex" value="addpost" />
+							<input type="hidden" name="postindex" value="<?php echo $article->articleid; ?>" />	
+							<label class="article_form">
+								<span><font color="black">Post a comment</font></span><br>
+								<textarea class="post_forminput" id="post" name="post" value="" type="text" placeholder="Add comment" rows="5" columns="40"></textarea>
+							</label>
+							<button class="article_formalign article_submitbtn" type="submit">Submit</button>
+						</form>
 					</td></tr></table>
 					</div>
 					<div id="ftwrating">

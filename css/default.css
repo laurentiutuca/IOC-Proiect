@@ -567,3 +567,8 @@ form.authenticate input::-webkit-input-placeholder { color:#bbb; text-shadow:0 0
 .article_submitbtn {
 	margin-top: 10px;
 }
+
+.post_forminput {
+	width: 100%;
+	background: #fff;
+}

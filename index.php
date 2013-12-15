@@ -3,6 +3,7 @@
 	include "classes/User.php";
 	include "classes/Article.php";
 	include "classes/ArticleCategory.php";
+	include "classes/Post.php";
 
 	require_once 'variables.php';
 	require_once 'functions.php';
@@ -24,6 +25,7 @@
 						$_SESSION['login'] = true;
 						$_SESSION['userid'] = $user->userid;
 						$_SESSION['username'] = $user->username;
+						$_SESSION['rating'] = $user->rating;
 					}	
 				}
 
