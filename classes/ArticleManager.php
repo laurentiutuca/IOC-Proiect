@@ -28,5 +28,22 @@
 
 			return $articlesList;
 		}
+
+		public function getArticle($articleid) {
+			$query = "SELECT * FROM ftwarticles WHERE articleid = " . $articleid . ";";
+
+			$result = mysql_query($query);
+
+			$row = mysql_fetch_array($result);
+			if ($row) {
+				$article = new Article();
+				$article->setSavedAttributes($row['article_link'], $row['url_image'], $row['article_review'], $row['article_subject'], $row['article_categoryid'], $row['article_authorid'], $row['article_date'], $row['article_rating'], $row['articleid'], $row['article_body']);
+				$article->getCategory();
+				$article->getAuthor();
+
+				return $article;
+			}
+			return false;
+		}
 	}
 ?>

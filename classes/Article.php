@@ -27,7 +27,7 @@
 			$this->url_image = $url_image;
 			$this->review = $feedback;
 			$this->subject = $title;
-			$this->categoryid = (int)$selectcateg - 1;
+			$this->categoryid = (int)$selectcateg;
 			$this->authorid = $userid;
 		}
 

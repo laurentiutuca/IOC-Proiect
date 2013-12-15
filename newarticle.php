@@ -3,7 +3,6 @@
 	require_once('functions.php');
 
 	include "config.php";
-	include "classes/Category.php";
 ?>
 
 <!DOCTYPE>
@@ -67,7 +66,7 @@
 					<label class="article_form">
 						<span class="article_formalign">Select a category</span><br>
 						<?php
-							$category = new Category();
+							$category = new ArticleCategory();
 							$categories = $category->getCategories();
 						?>
 						<select id="selectcategory" name="selectcateg" class="article_formalign inputfield" onchange="checkvalues('<?php echo count($categories); ?>');">
@@ -75,7 +74,7 @@
 							<?php
 								$i = 0;
 								for ($i = 0; $i < count($categories); $i++) {
-									?><option value="<?php echo i+1; ?>"><?php echo $categories[$i]; ?></option><?php
+									?><option value="<?php echo $i+1; ?>"><?php echo $categories[$i]; ?></option><?php
 								}
 								?><option value="<?php echo count($categories) + 1; ?>">Add new category</option><?php
 							?>
@@ -115,6 +114,7 @@ function checkvalues(selectTotal) {
 		inputElement.className = "article_formalign inputfield newctg";
 		inputElement.id = "newCategory";
 		inputElement.placeholder = "New category";
+		inputElement.name = "inputcategory";
 		inputElement.type = "text";
 		document.getElementById("newcategoryinp").appendChild(inputElement);
 	}

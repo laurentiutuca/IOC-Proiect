@@ -2,6 +2,7 @@
 	include "config.php";
 	include "classes/User.php";
 	include "classes/Article.php";
+	include "classes/ArticleCategory.php";
 
 	require_once 'variables.php';
 	require_once 'functions.php';
@@ -63,7 +64,15 @@
 			case "submitarticle":
 				if (isset($_POST['title']) && isset($_POST['url'])) {
 					$article = new Article();
-					$article->setAttributes($_POST['url'], $_POST['url_image'], $_POST['feedback'], $_POST['title'], $_POST['selectedcategory'], $_SESSION['userid']);
+					$category = new ArticleCategory();
+					$categories = $category->getCategories();
+
+					if ($_POST['selectedcategory'] == count($categories) + 1) {
+						$category->addCategory($_POST['inputcategory']);
+					}
+					$nrcategories = $_POST['selectedcategory'];
+
+					$article->setAttributes($_POST['url'], $_POST['url_image'], $_POST['feedback'], $_POST['title'], $nrcategories, $_SESSION['userid']);
 
 					$article->getArticleViaCurl();
 

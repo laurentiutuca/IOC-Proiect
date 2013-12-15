@@ -26,6 +26,8 @@
 		<?php
 			require 'variables.php';
 			require 'functions.php';
+			require 'classes/Article.php';
+			require 'classes/ArticleManager.php';
 		?>
 	</head>
 	<body>
@@ -42,9 +44,24 @@
 					Feedback The World
 			</div>
 		</a>
-		<form>
-		</form>
+		<?php if (isset($_SESSION['login']) && $_SESSION['login'] == true) { ?>
+				<div class="btn-sign">
+					<a href="index.php?actionindex=logout" class="logout_option">Logout</a>
+        			</div>
+				<div class="btn-sign">
+					<a href="index.php?actionindex=addarticle" class="article_option">Add article</a>
+        			</div>
+			<?php } else {?>		
+				<div class="btn-sign">
+					<a href="#login-box" class="login-window">Login / Sign Up</a>
+        			</div>
+			<?php } ?>
 	</div>
+
+	<?php
+		$articleManager = new ArticleManager();
+		$article = $articleManager->getArticle($_GET['articleid']);
+	?>
 
 	<div style="margin-top: 40px">
 	<a href="default.php">
@@ -52,16 +69,16 @@
 	</a>
 	&nbsp;>>&nbsp; 
 	<a>
-		<?php echo $_GET["category_explicit"]; ?>
+		<?php echo $article->category; ?>
 	</a>
 	&nbsp;>>&nbsp; 
-	<?php echo $_GET["title"]; ?>
+	<?php echo $article->subject; ?>
 	<br />
 	<table border="1" bordercolor="green" width=100%>
 		<tr>
 			<td>
-			<strong><?php echo $title; ?></strong><br \><!-- aici -->
-			<a href=<?php echo $url; ?> style="color: black; text-decoration: none;"><?php echo $text_preview; ?><br><img src=<?php echo $img_src; ?> /></a><br \><br \>
+			<strong><?php echo $article->subject; ?></strong><br \><!-- aici -->
+			<a href="<?php echo $article->link; ?>" style="color: black; text-decoration: none;"><?php echo $article->body; ?><br><img src="<?php echo $article->url_image; ?>" /></a><br \><br \>
 			</td>
 		</tr>
 	</table>
@@ -74,7 +91,8 @@
         </ul>
         <div class="tabcontents">
             <div id="authoropinion">
-                <p><font color="black">Parerea autorului :)</font></font></p><!-- aici -->
+		<span style="background-color:lime;width=30px;text-align:center" height="20"><?php echo $article->rating?></span> <b><?php echo $article->author; ?></b><span style="float:right"><?php echo $article->date; ?></span>
+                <p><font color="black"><?php echo $article->review; ?></font></p><!-- aici -->
 				<div align="left" style="height:30px">
 					<span id="rateStatus">Rate this comment</span>
 					<span id="ratingSaved">Rating Saved!</span>

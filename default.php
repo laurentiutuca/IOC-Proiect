@@ -185,7 +185,7 @@
 
 			$i = 0;
 			for ($i = 0; $i < count($articleList); $i++) {
-				echo '<script>insertNewPost(' . $i . ',"' . $articleList[$i]->subject . '", "' . $articleList[$i]->body . '", "' . $articleList[$i]->url_image . '", "' . $articleList[$i]->category . '", "' . $articleList[$i]->link . '"); </script>';
+				echo '<script>insertNewPost(' . $i . ', ' . $articleList[$i]->articleid . ', "' . $articleList[$i]->subject . '", "' . $articleList[$i]->body . '", "' . $articleList[$i]->url_image . '", "' . $articleList[$i]->category . '", "' . $articleList[$i]->link . '"); </script>';
 			}
 		 ?>
 	</body>

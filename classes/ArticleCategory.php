@@ -1,10 +1,10 @@
 <?php
 	require_once( dirname(dirname(__FILE__)) . '/config.php' );	
 
-	class Category {
+	class ArticleCategory {
 		public $categoryid;
 		public $category_name;
-		public $date;
+		public $category_date;
 
 		public $categories = array();
 
@@ -26,6 +26,12 @@
 			}
 
 			return $categories;
+		}
+
+		public function addCategory($category_name) {
+			$query = "INSERT into ftwcategories (category_name, category_date) VALUES ('" . $category_name . "', '" . date("F j, Y, g:i a") . "');";
+
+			mysql_query( $query ) or die(mysql_error());
 		}
 	}	
 ?>

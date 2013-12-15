@@ -55,7 +55,7 @@ function checkJS() {
 	alert("here");
 }
 
-function insertNewPost(n_posts, title, text_preview, img_src, category, category_explicit, url ){
+function insertNewPost(n_posts, articleid, title, text_preview, img_src, category, category_explicit, url ){
 	var side;
 
 	if( n_posts <= 1 ){
@@ -73,8 +73,8 @@ function insertNewPost(n_posts, title, text_preview, img_src, category, category
 			break;
 		}
 	}
-	a_href = '<a id="a_href_articol" href="article.php?title=' + title + '&text_preview=' + text_preview + '&img_src=' + img_src + '&category=' + category_explicit + '&category_explicit=' + category_explicit + '&url=' + url + '">';
-	text_preview += '<br />' + '<a href="article.php?title=' + title + '&text_preview=' + text_preview + '&img_src=' + img_src + '&category=' + category_explicit + '&category_explicit=' + category_explicit + '&url=' + url + '">' + 'Cite&#x219;te tot articolul...</a>'
+	a_href = '<a id="a_href_articol" href="article.php?articleid=' + articleid + '">';
+	text_preview += '<br />' + '<a href="article.php?articleid=' + articleid + '">' + 'Cite&#x219;te tot articolul...</a>';
 	document.getElementById( side + '_post_wrapper' ).innerHTML += '' +
 				'<div class="' + side + '_side_post">' + 
 					'<div class="' + side + '_post_useful">' + 
